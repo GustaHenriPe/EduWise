@@ -1,0 +1,17 @@
+package com.EduWise.EduWise.core.domain;
+
+import com.EduWise.EduWise.core.enums.ContentType;
+
+import java.time.LocalDateTime;
+
+public record Lesson(
+        Long id,
+        Long moduleId,
+        String title,
+        ContentType contentType,
+        String videoUrl,
+        String textContent,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
+) {
+}
