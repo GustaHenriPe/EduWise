@@ -12,15 +12,13 @@ public class CourseEntityMapper {
         entity.setId(domain.id());
         entity.setTitle(domain.title());
         entity.setDescription(domain.description());
-        entity.setCreatedAt(domain.createdAt());
-        entity.setUpdatedAt(domain.updatedAt());
         return entity;
     }
 
     public Course toDomain(CourseEntity entity) {
         return new Course(
                 entity.getId(),
-                entity.getTeacher() != null ? entity.getTeacher().getId() : null,
+                entity.getTeacher().getId(),
                 entity.getTitle(),
                 entity.getDescription(),
                 entity.getCreatedAt(),
