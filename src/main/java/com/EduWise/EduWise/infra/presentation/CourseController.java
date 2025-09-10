@@ -22,13 +22,13 @@ public class CourseController {
     private final UpdateCourseUseCase updateCourseUseCase;
     private final DeleteCourseUseCase deleteCourseUseCase;
 
-    @PostMapping("create")
+    @PostMapping()
     public CourseResponse createCourse(@RequestBody CourseRequest dto) {
         Course savedCourse = createCourseUseCase.execute(mapper.toDomain(dto));
         return mapper.toResponse(savedCourse);
     }
 
-    @GetMapping
+    @GetMapping()
     public List<CourseResponse> getAllCourses() {
         return getAllCoursesUseCase.execute()
                 .stream()

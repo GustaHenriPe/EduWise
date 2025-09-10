@@ -35,7 +35,7 @@ public class CourseEntity {
     private LocalDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEACHER_ID")
+    @JoinColumn(name = "TEACHER_ID", nullable = false)
     private UserEntity teacher;
 
     @OneToMany(mappedBy = "courseEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
