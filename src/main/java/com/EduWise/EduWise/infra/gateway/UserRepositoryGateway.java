@@ -55,6 +55,12 @@ public class UserRepositoryGateway implements UserGateway {
 
     @Override
     public void deleteUser(Long id) {
+    UserEntity existingUser = verifyUserById(id);
+        userRepository.delete(existingUser);
+    }
 
+    public UserEntity verifyUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/user/")
+@RequestMapping("/users/")
 public class UserController {
 
     private final UserRequestResponseMapper mapper;
@@ -22,13 +22,13 @@ public class UserController {
     private final UpdateUserUseCase updateUserUseCase;
     private final DeleteUserUseCase deleteUserUseCase;
 
-    @PostMapping("register")
+    @PostMapping()
     public UserResponse createUser(@RequestBody UserRequest dto) {
         User savedUser = createUserUseCase.execute(mapper.toDomain(dto));
         return mapper.toResponse(savedUser);
     }
 
-    @GetMapping
+    @GetMapping()
     public List<UserResponse> getAllUsers() {
         return getAllUsersUseCase.execute()
                 .stream()
@@ -42,9 +42,14 @@ public class UserController {
         return mapper.toResponse(user);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("{id}")
     public UserResponse updateUser(@PathVariable Long id, @RequestBody UserRequest dto) {
         User updatedUser = updateUserUseCase.execute(id, mapper.toDomain(dto));
         return mapper.toResponse(updatedUser);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteUser(@PathVariable Long id) {
+        deleteUserUseCase.execute(id);
     }
 }
