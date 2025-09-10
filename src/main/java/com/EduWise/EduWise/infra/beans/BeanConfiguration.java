@@ -5,8 +5,8 @@ import com.EduWise.EduWise.core.usecases.course.*;
 import com.EduWise.EduWise.core.usecases.user.*;
 import com.EduWise.EduWise.core.usecases.module.*;
 import com.EduWise.EduWise.core.usecases.lesson.*;
-import com.EduWise.EduWise.core.usecases.coursecategorie.*;
-import com.EduWise.EduWise.core.usecases.studentenrollment.*;
+import com.EduWise.EduWise.core.usecases.course_categorie.*;
+import com.EduWise.EduWise.core.usecases.student_enrollment.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
