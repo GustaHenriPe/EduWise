@@ -9,4 +9,7 @@ public record Module(
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {
+    public Module(Long courseId, String title) {
+        this(null, courseId, title, null, null);
+    }
 }
