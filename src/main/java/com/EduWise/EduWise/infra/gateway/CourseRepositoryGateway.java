@@ -3,6 +3,7 @@ package com.EduWise.EduWise.infra.gateway;
 import com.EduWise.EduWise.core.domain.Course;
 import com.EduWise.EduWise.core.gateway.CourseGateway;
 import com.EduWise.EduWise.infra.mappers.course.CourseEntityMapper;
+import com.EduWise.EduWise.infra.persistence.entities.CourseCategoryEntity;
 import com.EduWise.EduWise.infra.persistence.entities.CourseEntity;
 import com.EduWise.EduWise.infra.persistence.entities.UserEntity;
 import com.EduWise.EduWise.infra.persistence.repositories.CourseRepository;
@@ -19,13 +20,16 @@ public class CourseRepositoryGateway implements CourseGateway {
     private final CourseRepository courseRepository;
     private final CourseEntityMapper mapper;
     private final UserRepositoryGateway userGateway;
+    private final CourseCategoryRepositoryGateway categoryGateway;
 
     @Override
     public Course createCourse(Course course) {
         Long teacherId = course.teacherId();
         UserEntity teacher = userGateway.verifyUserById(course.teacherId());
+        CourseCategoryEntity category = categoryGateway.verifyExistingCourseCategory(course.categoryId());
         CourseEntity courseEntity = mapper.toEntity(course);
         courseEntity.setTeacher(teacher);
+        courseEntity.setCategory(category);
         CourseEntity savedCourse = courseRepository.save(courseEntity);
         return mapper.toDomain(savedCourse);
     }
@@ -47,8 +51,18 @@ public class CourseRepositoryGateway implements CourseGateway {
     @Override
     public Course updateCourse(Long id, Course course) {
         CourseEntity existingCourse = verifyExistingCourse(id);
-        UserEntity teacher = userGateway.verifyUserById(course.teacherId());
-        updateCourseEntityFields(existingCourse, course, teacher);
+
+        UserEntity teacher = userGateway
+                .verifyUserById(course.teacherId());
+
+        CourseCategoryEntity category = categoryGateway
+                .verifyExistingCourseCategory(course.categoryId());
+
+        existingCourse.setTitle(course.title());
+        existingCourse.setDescription(course.description());
+        existingCourse.setTeacher(teacher);
+        existingCourse.setCategory(category);
+
         CourseEntity updatedCourse = courseRepository.save(existingCourse);
         return mapper.toDomain(updatedCourse);
     }
@@ -59,15 +73,9 @@ public class CourseRepositoryGateway implements CourseGateway {
         courseRepository.deleteById(id);
     }
 
-    public CourseEntity verifyExistingCourse(Long id){
+    public CourseEntity verifyExistingCourse(Long id) {
         return courseRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Course not found with ID: " + id));
-    }
-
-    private void updateCourseEntityFields(CourseEntity entity, Course course, UserEntity teacher) {
-        entity.setTitle(course.title());
-        entity.setDescription(course.description());
-        entity.setTeacher(teacher);
     }
 }
 

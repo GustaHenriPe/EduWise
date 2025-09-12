@@ -38,6 +38,10 @@ public class CourseEntity {
     @JoinColumn(name = "TEACHER_ID", nullable = false)
     private UserEntity teacher;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CATEGORY_ID", nullable = false)
+    private CourseCategoryEntity category;
+
     @OneToMany(mappedBy = "courseEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ModuleEntity> moduleEntities;
 }

@@ -5,6 +5,7 @@ import com.EduWise.EduWise.core.usecases.course.*;
 import com.EduWise.EduWise.infra.dtos.course.CourseRequest;
 import com.EduWise.EduWise.infra.dtos.course.CourseResponse;
 import com.EduWise.EduWise.infra.mappers.course.CourseRequestResponseMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +24,8 @@ public class CourseController {
     private final DeleteCourseUseCase deleteCourseUseCase;
 
     @PostMapping()
-    public CourseResponse createCourse(@RequestBody CourseRequest dto) {
-        Course savedCourse = createCourseUseCase.execute(mapper.toDomain(dto));
+    public CourseResponse createCourse(@Valid @RequestBody CourseRequest request) {
+        Course savedCourse = createCourseUseCase.execute(mapper.toDomain(request));
         return mapper.toResponse(savedCourse);
     }
 
@@ -43,8 +44,8 @@ public class CourseController {
     }
 
     @PutMapping("{id}")
-    public CourseResponse updateCourse(@PathVariable Long id, @RequestBody CourseRequest dto) {
-        Course updatedCourse = updateCourseUseCase.execute(id, mapper.toDomain(dto));
+    public CourseResponse updateCourse(@PathVariable Long id, @Valid @RequestBody CourseRequest request) {
+        Course updatedCourse = updateCourseUseCase.execute(id, mapper.toDomain(request));
         return mapper.toResponse(updatedCourse);
     }
 

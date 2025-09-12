@@ -1,7 +1,5 @@
 package com.EduWise.EduWise.infra.dtos.course;
 
-import lombok.Builder;
-
 import java.time.LocalDateTime;
 
 public record CourseResponse(
@@ -12,7 +10,8 @@ public record CourseResponse(
         LocalDateTime updatedAt,
         Long teacherId,
         String teacherName,
-        String teacherEmail
+        String teacherEmail,
+        String categoryTitle
 ) {
 
 }

@@ -9,7 +9,6 @@ public class CourseEntityMapper {
 
     public CourseEntity toEntity(Course domain) {
         CourseEntity entity = new CourseEntity();
-        entity.setId(domain.id());
         entity.setTitle(domain.title());
         entity.setDescription(domain.description());
         return entity;
@@ -19,6 +18,7 @@ public class CourseEntityMapper {
         return new Course(
                 entity.getId(),
                 entity.getTeacher().getId(),
+                entity.getCategory().getId(),
                 entity.getTitle(),
                 entity.getDescription(),
                 entity.getCreatedAt(),
