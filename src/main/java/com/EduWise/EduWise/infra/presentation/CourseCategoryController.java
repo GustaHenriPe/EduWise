@@ -4,7 +4,7 @@ import com.EduWise.EduWise.core.domain.CourseCategory;
 import com.EduWise.EduWise.core.usecases.course_category.*;
 import com.EduWise.EduWise.infra.dtos.course_category.CourseCategoryRequest;
 import com.EduWise.EduWise.infra.dtos.course_category.CourseCategoryResponse;
-import com.EduWise.EduWise.infra.mappers.course_category.CourseCatorieRequestReponseMapper;
+import com.EduWise.EduWise.infra.mappers.course_category.CourseCategoryRequestReponseMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/course-categories/")
 public class CourseCategoryController {
-    private final CourseCatorieRequestReponseMapper mapper;
+    private final CourseCategoryRequestReponseMapper mapper;
     private final CreateCourseCategoryUseCase createCourseCategoryUseCase;
     private final GetAllCourseCategoriesUseCase getAllCourseCategoriesUseCase;
     private final GetCourseCategoryByIdUseCase getCourseCategoryByIdUseCase;
