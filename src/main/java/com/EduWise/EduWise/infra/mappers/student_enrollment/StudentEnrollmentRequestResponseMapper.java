@@ -10,22 +10,22 @@ import com.EduWise.EduWise.infra.persistence.entities.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@RequiredArgsConstructor
+
 @Component
+@RequiredArgsConstructor
 public class StudentEnrollmentRequestResponseMapper {
 
-    private CourseRepositoryGateway courseGateway;
-    private UserRepositoryGateway userGateway;
+    private final CourseRepositoryGateway courseGateway;
+    private final UserRepositoryGateway userGateway;
 
     public StudentEnrollment toDomain(EnrollmentRequest request) {
         return new StudentEnrollment(
-                request.id(),
                 request.studentId(),
                 request.courseId()
         );
     }
 
-    public EnrollmentResponse toResponse(StudentEnrollment studentEnrollment){
+    public EnrollmentResponse toResponse(StudentEnrollment studentEnrollment) {
         CourseEntity course = courseGateway.verifyExistingCourse(studentEnrollment.courseId());
         UserEntity user = userGateway.verifyUserById(studentEnrollment.userId());
 

@@ -5,6 +5,7 @@ import com.EduWise.EduWise.core.usecases.student_enrollment.*;
 import com.EduWise.EduWise.infra.dtos.student_enrollment.EnrollmentRequest;
 import com.EduWise.EduWise.infra.dtos.student_enrollment.EnrollmentResponse;
 import com.EduWise.EduWise.infra.mappers.student_enrollment.StudentEnrollmentRequestResponseMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class StudentEnrollmentController {
     private final DeleteStudentEnrollmentUseCase deleteStudentEnrollmentUseCase;
     
     @PostMapping()
-    public EnrollmentResponse createEnrollment(@RequestBody EnrollmentRequest request){
+    public EnrollmentResponse createEnrollment(@Valid @RequestBody EnrollmentRequest request){
         StudentEnrollment savedEnrollment = createStudentEnrollmentUseCase.execute(mapper.toDomain(request));
         return mapper.toResponse(savedEnrollment);
     }
@@ -42,7 +43,7 @@ public class StudentEnrollmentController {
     }
 
     @PutMapping("{id}")
-    public EnrollmentResponse updateEnrollment(@PathVariable Long id, @RequestBody EnrollmentRequest request) {
+    public EnrollmentResponse updateEnrollment(@PathVariable Long id,@Valid @RequestBody EnrollmentRequest request) {
         StudentEnrollment updatedEnrollment = updateStudentEnrollmentUseCase.execute(id, mapper.toDomain(request));
         return mapper.toResponse(updatedEnrollment);
     }

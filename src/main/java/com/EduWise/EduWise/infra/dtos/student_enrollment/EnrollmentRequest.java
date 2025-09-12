@@ -1,7 +1,11 @@
 package com.EduWise.EduWise.infra.dtos.student_enrollment;
 
+import jakarta.validation.constraints.NotNull;
+
 public record EnrollmentRequest(
-        Long id,
+        @NotNull(message = "Student ID cannot be null")
         Long studentId,
-        Long courseId) {
+        @NotNull(message = "Course ID cannot be null")
+        Long courseId
+) {
 }

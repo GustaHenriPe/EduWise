@@ -9,7 +9,7 @@ public record StudentEnrollment(
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {
-    public StudentEnrollment(Long id, Long userId, Long courseId) {
-        this(id, userId, courseId, LocalDateTime.now(), LocalDateTime.now());
+    public StudentEnrollment(Long userId, Long courseId) {
+        this(null, userId, courseId, null, null);
     }
 }
