@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 
 @Builder
 public record UserRequest(
-        Long id,
         String name,
         String email,
         String passwordHash,

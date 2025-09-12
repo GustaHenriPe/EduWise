@@ -13,4 +13,7 @@ public record User(
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {
+    public User(String name, String email, String passwordHash, Roles role) {
+        this(null, name, email, passwordHash, role, null, null);
+    }
 }

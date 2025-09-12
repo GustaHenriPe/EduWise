@@ -10,13 +10,10 @@ public class UserRequestResponseMapper {
 
     public User toDomain(UserRequest userRequest) {
         return new User(
-                userRequest.id(),
                 userRequest.name(),
                 userRequest.email(),
                 userRequest.passwordHash(),
-                userRequest.role(),
-                userRequest.createdAt(),
-                userRequest.updatedAt()
+                userRequest.role()
         );
     }
 
