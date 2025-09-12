@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.mappers.module;
 
-import com.EduWise.EduWise.core.domain.Module;
+import com.EduWise.EduWise.core.domain.entities.Module;
 import com.EduWise.EduWise.infra.dtos.module.ModuleRequest;
 import com.EduWise.EduWise.infra.dtos.module.ModuleResponse;
 import org.springframework.stereotype.Component;

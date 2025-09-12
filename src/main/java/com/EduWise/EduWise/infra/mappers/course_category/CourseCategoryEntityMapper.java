@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.mappers.course_category;
 
-import com.EduWise.EduWise.core.domain.CourseCategory;
+import com.EduWise.EduWise.core.domain.entities.CourseCategory;
 import com.EduWise.EduWise.infra.persistence.entities.CourseCategoryEntity;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.presentation;
 
-import com.EduWise.EduWise.core.domain.StudentEnrollment;
+import com.EduWise.EduWise.core.domain.entities.StudentEnrollment;
 import com.EduWise.EduWise.core.usecases.student_enrollment.*;
 import com.EduWise.EduWise.infra.dtos.student_enrollment.EnrollmentRequest;
 import com.EduWise.EduWise.infra.dtos.student_enrollment.EnrollmentResponse;
@@ -43,7 +43,7 @@ public class StudentEnrollmentController {
     }
 
     @PutMapping("{id}")
-    public EnrollmentResponse updateEnrollment(@PathVariable Long id,@Valid @RequestBody EnrollmentRequest request) {
+    public EnrollmentResponse updateEnrollment(@PathVariable Long id, @Valid @RequestBody EnrollmentRequest request) {
         StudentEnrollment updatedEnrollment = updateStudentEnrollmentUseCase.execute(id, mapper.toDomain(request));
         return mapper.toResponse(updatedEnrollment);
     }

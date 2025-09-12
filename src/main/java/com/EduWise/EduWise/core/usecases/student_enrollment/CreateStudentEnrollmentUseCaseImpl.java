@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.core.usecases.student_enrollment;
 
-import com.EduWise.EduWise.core.domain.StudentEnrollment;
+import com.EduWise.EduWise.core.domain.entities.StudentEnrollment;
 import com.EduWise.EduWise.core.gateway.StudentEnrollmentGateway;
 
 public class CreateStudentEnrollmentUseCaseImpl implements CreateStudentEnrollmentUseCase {

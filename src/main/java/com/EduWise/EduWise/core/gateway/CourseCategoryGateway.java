@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.core.gateway;
 
-import com.EduWise.EduWise.core.domain.CourseCategory;
+import com.EduWise.EduWise.core.domain.entities.CourseCategory;
 
 import java.util.List;
 

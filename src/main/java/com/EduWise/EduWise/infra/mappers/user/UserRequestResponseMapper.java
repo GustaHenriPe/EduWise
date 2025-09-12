@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.mappers.user;
 
-import com.EduWise.EduWise.core.domain.User;
+import com.EduWise.EduWise.core.domain.entities.User;
 import com.EduWise.EduWise.infra.dtos.user.UserRequest;
 import com.EduWise.EduWise.infra.dtos.user.UserResponse;
 import org.springframework.stereotype.Component;

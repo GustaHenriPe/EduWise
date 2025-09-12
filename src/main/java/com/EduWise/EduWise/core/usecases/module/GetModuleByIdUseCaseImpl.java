@@ -1,9 +1,7 @@
 package com.EduWise.EduWise.core.usecases.module;
 
-import com.EduWise.EduWise.core.domain.Module;
+import com.EduWise.EduWise.core.domain.entities.Module;
 import com.EduWise.EduWise.core.gateway.ModuleGateway;
-
-import java.util.Optional;
 
 public class GetModuleByIdUseCaseImpl implements GetModuleByIdUseCase {
 

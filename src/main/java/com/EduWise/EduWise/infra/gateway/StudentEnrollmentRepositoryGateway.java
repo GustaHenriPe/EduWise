@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.gateway;
 
-import com.EduWise.EduWise.core.domain.StudentEnrollment;
+import com.EduWise.EduWise.core.domain.entities.StudentEnrollment;
 import com.EduWise.EduWise.core.gateway.StudentEnrollmentGateway;
 import com.EduWise.EduWise.infra.mappers.student_enrollment.StudentEnrollmentEntityMapper;
 import com.EduWise.EduWise.infra.persistence.entities.StudentEnrollmentEntity;
@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Component

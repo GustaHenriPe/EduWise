@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.mappers.student_enrollment;
 
-import com.EduWise.EduWise.core.domain.StudentEnrollment;
+import com.EduWise.EduWise.core.domain.entities.StudentEnrollment;
 import com.EduWise.EduWise.infra.persistence.entities.StudentEnrollmentEntity;
 import org.springframework.stereotype.Component;
 

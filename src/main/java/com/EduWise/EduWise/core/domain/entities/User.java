@@ -1,4 +1,4 @@
-package com.EduWise.EduWise.core.domain;
+package com.EduWise.EduWise.core.domain.entities;
 
 import com.EduWise.EduWise.core.enums.Roles;
 

@@ -1,10 +1,11 @@
 package com.EduWise.EduWise.infra.presentation;
 
-import com.EduWise.EduWise.core.domain.User;
+import com.EduWise.EduWise.core.domain.entities.User;
 import com.EduWise.EduWise.core.usecases.user.*;
 import com.EduWise.EduWise.infra.dtos.user.UserRequest;
 import com.EduWise.EduWise.infra.dtos.user.UserResponse;
 import com.EduWise.EduWise.infra.mappers.user.UserRequestResponseMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class UserController {
     private final DeleteUserUseCase deleteUserUseCase;
 
     @PostMapping()
-    public UserResponse createUser(@RequestBody UserRequest dto) {
+    public UserResponse createUser(@Valid @RequestBody UserRequest dto) {
         User savedUser = createUserUseCase.execute(mapper.toDomain(dto));
         return mapper.toResponse(savedUser);
     }
@@ -43,7 +44,7 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public UserResponse updateUser(@PathVariable Long id, @RequestBody UserRequest dto) {
+    public UserResponse updateUser(@PathVariable Long id, @Valid @RequestBody UserRequest dto) {
         User updatedUser = updateUserUseCase.execute(id, mapper.toDomain(dto));
         return mapper.toResponse(updatedUser);
     }

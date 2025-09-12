@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.presentation;
 
-import com.EduWise.EduWise.core.domain.CourseCategory;
+import com.EduWise.EduWise.core.domain.entities.CourseCategory;
 import com.EduWise.EduWise.core.usecases.course_category.*;
 import com.EduWise.EduWise.infra.dtos.course_category.CourseCategoryRequest;
 import com.EduWise.EduWise.infra.dtos.course_category.CourseCategoryResponse;

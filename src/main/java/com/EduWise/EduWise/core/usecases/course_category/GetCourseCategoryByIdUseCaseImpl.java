@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.core.usecases.course_category;
 
-import com.EduWise.EduWise.core.domain.CourseCategory;
+import com.EduWise.EduWise.core.domain.entities.CourseCategory;
 import com.EduWise.EduWise.core.gateway.CourseCategoryGateway;
 
 public class GetCourseCategoryByIdUseCaseImpl implements GetCourseCategoryByIdUseCase {

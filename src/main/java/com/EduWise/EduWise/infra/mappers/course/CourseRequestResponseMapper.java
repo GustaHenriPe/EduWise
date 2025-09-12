@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.mappers.course;
 
-import com.EduWise.EduWise.core.domain.Course;
+import com.EduWise.EduWise.core.domain.entities.Course;
 import com.EduWise.EduWise.infra.dtos.course.CourseRequest;
 import com.EduWise.EduWise.infra.dtos.course.CourseResponse;
 import com.EduWise.EduWise.infra.gateway.CourseCategoryRepositoryGateway;

@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.core.gateway;
 
-import com.EduWise.EduWise.core.domain.StudentEnrollment;
+import com.EduWise.EduWise.core.domain.entities.StudentEnrollment;
 
 import java.util.List;
 

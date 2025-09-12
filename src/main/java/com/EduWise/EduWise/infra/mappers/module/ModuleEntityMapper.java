@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.mappers.module;
 
-import com.EduWise.EduWise.core.domain.Module;
+import com.EduWise.EduWise.core.domain.entities.Module;
 import com.EduWise.EduWise.infra.persistence.entities.ModuleEntity;
 import org.springframework.stereotype.Component;
 

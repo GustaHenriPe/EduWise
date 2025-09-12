@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.gateway;
 
-import com.EduWise.EduWise.core.domain.User;
+import com.EduWise.EduWise.core.domain.entities.User;
 import com.EduWise.EduWise.core.gateway.UserGateway;
 import com.EduWise.EduWise.infra.mappers.user.UserEntityMapper;
 import com.EduWise.EduWise.infra.persistence.entities.UserEntity;

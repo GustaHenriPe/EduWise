@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.gateway;
 
-import com.EduWise.EduWise.core.domain.Lesson;
+import com.EduWise.EduWise.core.domain.entities.Lesson;
 import com.EduWise.EduWise.core.gateway.LessonGateway;
 import org.springframework.stereotype.Component;
 

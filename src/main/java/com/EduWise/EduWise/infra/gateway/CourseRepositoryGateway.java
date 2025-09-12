@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.gateway;
 
-import com.EduWise.EduWise.core.domain.Course;
+import com.EduWise.EduWise.core.domain.entities.Course;
 import com.EduWise.EduWise.core.gateway.CourseGateway;
 import com.EduWise.EduWise.infra.mappers.course.CourseEntityMapper;
 import com.EduWise.EduWise.infra.persistence.entities.CourseCategoryEntity;

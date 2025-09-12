@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.core.usecases.user;
 
-import com.EduWise.EduWise.core.domain.User;
+import com.EduWise.EduWise.core.domain.entities.User;
 
 import java.util.List;
 

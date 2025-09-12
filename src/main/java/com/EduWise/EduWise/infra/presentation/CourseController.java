@@ -1,6 +1,6 @@
 package com.EduWise.EduWise.infra.presentation;
 
-import com.EduWise.EduWise.core.domain.Course;
+import com.EduWise.EduWise.core.domain.entities.Course;
 import com.EduWise.EduWise.core.usecases.course.*;
 import com.EduWise.EduWise.infra.dtos.course.CourseRequest;
 import com.EduWise.EduWise.infra.dtos.course.CourseResponse;
