@@ -8,13 +8,14 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 @Table(name = "COURSE_CATEGORIES")
-public class CourseCategorieEntity {
+public class CourseCategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,7 +31,6 @@ public class CourseCategorieEntity {
     @Column(name = "UPDATED_AT")
     private LocalDateTime updatedAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COURSE_ID")
-    private CourseEntity courseEntity;
+    @OneToMany(mappedBy = "category", orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<CourseEntity> courseEntities;
 }

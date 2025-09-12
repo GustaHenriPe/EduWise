@@ -5,7 +5,7 @@ import com.EduWise.EduWise.core.usecases.course.*;
 import com.EduWise.EduWise.core.usecases.user.*;
 import com.EduWise.EduWise.core.usecases.module.*;
 import com.EduWise.EduWise.core.usecases.lesson.*;
-import com.EduWise.EduWise.core.usecases.course_categorie.*;
+import com.EduWise.EduWise.core.usecases.course_category.*;
 import com.EduWise.EduWise.core.usecases.student_enrollment.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -117,30 +117,30 @@ public class BeanConfiguration {
         return new DeleteLessonUseCaseImpl(gateway);
     }
 
-    // CourseCategorie Use Cases
+    // CourseCategory Use Cases
     @Bean
-    public CreateCourseCategorieUseCase createCourseCategorie(CourseCategorieGateway gateway) {
-        return new CreateCourseCategorieUseCaseImpl(gateway);
+    public CreateCourseCategoryUseCase createCourseCategory(CourseCategoryGateway gateway) {
+        return new CreateCourseCategoryUseCaseImpl(gateway);
     }
 
     @Bean
-    public GetAllCourseCategoriesUseCase getAllCourseCategories(CourseCategorieGateway gateway) {
+    public GetAllCourseCategoriesUseCase getAllCourseCategories(CourseCategoryGateway gateway) {
         return new GetAllCourseCategoriesUseCaseImpl(gateway);
     }
 
     @Bean
-    public GetCourseCategorieByIdUseCase getCourseCategorieById(CourseCategorieGateway gateway) {
-        return new GetCourseCategorieByIdUseCaseImpl(gateway);
+    public GetCourseCategoryByIdUseCase getCourseCategoryById(CourseCategoryGateway gateway) {
+        return new GetCourseCategoryByIdUseCaseImpl(gateway);
     }
 
     @Bean
-    public UpdateCourseCategorieUseCase updateCourseCategorie(CourseCategorieGateway gateway) {
-        return new UpdateCourseCategorieUseCaseImpl(gateway);
+    public UpdateCourseCategoryUseCase updateCourseCategory(CourseCategoryGateway gateway) {
+        return new UpdateCourseCategoryUseCaseImpl(gateway);
     }
 
     @Bean
-    public DeleteCourseCategorieUseCase deleteCourseCategorie(CourseCategorieGateway gateway) {
-        return new DeleteCourseCategorieUseCaseImpl(gateway);
+    public DeleteCourseCategoryUseCase deleteCourseCategory(CourseCategoryGateway gateway) {
+        return new DeleteCourseCategoryUseCaseImpl(gateway);
     }
 
     // StudentEnrollment Use Cases
