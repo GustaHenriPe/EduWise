@@ -1,6 +1,7 @@
 package com.EduWise.EduWise.infra.gateway;
 
 import com.EduWise.EduWise.core.domain.entities.CourseCategory;
+import com.EduWise.EduWise.core.domain.exceptions.CourseCategoryNotFoundException;
 import com.EduWise.EduWise.core.gateway.CourseCategoryGateway;
 import com.EduWise.EduWise.infra.mappers.course_category.CourseCategoryEntityMapper;
 import com.EduWise.EduWise.infra.persistence.entities.CourseCategoryEntity;
@@ -54,7 +55,7 @@ public class CourseCategoryRepositoryGateway implements CourseCategoryGateway {
 
     public CourseCategoryEntity verifyExistingCourseCategory(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Course Category not found with ID: " + id));
+                .orElseThrow(() -> new CourseCategoryNotFoundException(id));
     }
 }
 
