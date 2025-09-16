@@ -2,11 +2,11 @@ package com.EduWise.EduWise.infra.beans;
 
 import com.EduWise.EduWise.core.gateway.*;
 import com.EduWise.EduWise.core.usecases.course.*;
-import com.EduWise.EduWise.core.usecases.user.*;
-import com.EduWise.EduWise.core.usecases.module.*;
-import com.EduWise.EduWise.core.usecases.lesson.*;
 import com.EduWise.EduWise.core.usecases.course_category.*;
+import com.EduWise.EduWise.core.usecases.lesson.*;
+import com.EduWise.EduWise.core.usecases.module.*;
 import com.EduWise.EduWise.core.usecases.student_enrollment.*;
+import com.EduWise.EduWise.core.usecases.user.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,8 +15,8 @@ public class BeanConfiguration {
 
     // Course Use Cases
     @Bean
-    public CreateCourseUseCase createCourse(CourseGateway gateway) {
-        return new CreateCourseUseCaseImpl(gateway);
+    public CreateCourseUseCase createCourse(CourseGateway courseGateway, UserGateway userGateway) {
+        return new CreateCourseUseCaseImpl(courseGateway, verifyUserRole(userGateway));
     }
 
     @Bean
@@ -63,6 +63,11 @@ public class BeanConfiguration {
     @Bean
     public DeleteUserUseCase deleteUser(UserGateway gateway) {
         return new DeleteUserUseCaseImpl(gateway);
+    }
+
+    @Bean
+    public VerifyUserRoleUseCase verifyUserRole(UserGateway gateway) {
+        return new VerifyUserRoleUseCaseImpl(gateway);
     }
 
     // Module Use Cases

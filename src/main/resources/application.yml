@@ -10,3 +10,7 @@ spring:
   jpa:
     show-sql: true
 
+  jackson:
+    deserialization:
+      fail-on-null-for-primitives: true
+      fail-on-missing-creator-properties: true
