@@ -1,11 +1,12 @@
 package com.EduWise.EduWise.infra.gateway;
 
 import com.EduWise.EduWise.core.domain.entities.User;
+import com.EduWise.EduWise.core.domain.exceptions.UserNotFoundException;
 import com.EduWise.EduWise.core.gateway.UserGateway;
 import com.EduWise.EduWise.infra.mappers.user.UserEntityMapper;
 import com.EduWise.EduWise.infra.persistence.entities.UserEntity;
 import com.EduWise.EduWise.infra.persistence.repositories.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -34,15 +35,13 @@ public class UserRepositoryGateway implements UserGateway {
 
     @Override
     public User getUserById(Long id) {
-        UserEntity user = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
+        UserEntity user = verifyUserById(id);
         return mapper.toDomain(user);
     }
 
     @Override
     public User updateUser(Long id, User user) {
-        UserEntity existingUser = userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
+        UserEntity existingUser = verifyUserById(id);
 
         existingUser.setName(user.name());
         existingUser.setEmail(user.email());
@@ -61,6 +60,6 @@ public class UserRepositoryGateway implements UserGateway {
 
     public UserEntity verifyUserById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + id));
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
 }
