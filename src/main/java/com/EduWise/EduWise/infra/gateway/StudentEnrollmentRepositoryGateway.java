@@ -1,6 +1,7 @@
 package com.EduWise.EduWise.infra.gateway;
 
 import com.EduWise.EduWise.core.domain.entities.StudentEnrollment;
+import com.EduWise.EduWise.core.domain.exceptions.EnrollmentNotFoundException;
 import com.EduWise.EduWise.core.gateway.StudentEnrollmentGateway;
 import com.EduWise.EduWise.infra.mappers.student_enrollment.StudentEnrollmentEntityMapper;
 import com.EduWise.EduWise.infra.persistence.entities.StudentEnrollmentEntity;
@@ -60,7 +61,7 @@ public class StudentEnrollmentRepositoryGateway implements StudentEnrollmentGate
 
     public StudentEnrollmentEntity verifyStudentEnrollmentById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Enrollment not found with ID: " + id));
+                .orElseThrow(() -> new EnrollmentNotFoundException(id));
     }
 }
 
