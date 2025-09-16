@@ -1,6 +1,7 @@
 package com.EduWise.EduWise.core.gateway;
 
 import com.EduWise.EduWise.core.domain.entities.User;
+import com.EduWise.EduWise.core.enums.Roles;
 
 import java.util.List;
 
@@ -14,5 +15,7 @@ public interface UserGateway {
     User updateUser(Long id, User user);
 
     void deleteUser(Long id);
+
+    Roles verifyUserRole(Long id);
 
 }

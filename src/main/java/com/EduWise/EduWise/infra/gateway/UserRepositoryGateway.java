@@ -2,6 +2,7 @@ package com.EduWise.EduWise.infra.gateway;
 
 import com.EduWise.EduWise.core.domain.entities.User;
 import com.EduWise.EduWise.core.domain.exceptions.UserNotFoundException;
+import com.EduWise.EduWise.core.enums.Roles;
 import com.EduWise.EduWise.core.gateway.UserGateway;
 import com.EduWise.EduWise.infra.mappers.user.UserEntityMapper;
 import com.EduWise.EduWise.infra.persistence.entities.UserEntity;
@@ -56,6 +57,12 @@ public class UserRepositoryGateway implements UserGateway {
     public void deleteUser(Long id) {
     UserEntity existingUser = verifyUserById(id);
         userRepository.delete(existingUser);
+    }
+
+    @Override
+    public Roles verifyUserRole(Long id) {
+        UserEntity user = verifyUserById(id);
+        return user.getRole();
     }
 
     public UserEntity verifyUserById(Long id) {
