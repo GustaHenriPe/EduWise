@@ -1,6 +1,7 @@
 package com.EduWise.EduWise.infra.gateway;
 
 import com.EduWise.EduWise.core.domain.entities.Module;
+import com.EduWise.EduWise.core.domain.exceptions.ModuleNotFoundException;
 import com.EduWise.EduWise.core.gateway.ModuleGateway;
 import com.EduWise.EduWise.infra.mappers.module.ModuleEntityMapper;
 import com.EduWise.EduWise.infra.persistence.entities.CourseEntity;
@@ -63,7 +64,7 @@ public class ModuleRepositoryGateway implements ModuleGateway {
 
     public ModuleEntity verifyExistingModule(Long id) {
         return moduleRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Module not found with id: " + id));
+                .orElseThrow(() -> new ModuleNotFoundException(id));
     }
 }
 
