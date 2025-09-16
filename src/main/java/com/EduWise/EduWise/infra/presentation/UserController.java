@@ -7,6 +7,8 @@ import com.EduWise.EduWise.infra.dtos.user.UserResponse;
 import com.EduWise.EduWise.infra.mappers.user.UserRequestResponseMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,33 +26,35 @@ public class UserController {
     private final DeleteUserUseCase deleteUserUseCase;
 
     @PostMapping()
-    public UserResponse createUser(@Valid @RequestBody UserRequest dto) {
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest dto) {
         User savedUser = createUserUseCase.execute(mapper.toDomain(dto));
-        return mapper.toResponse(savedUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(savedUser));
     }
 
     @GetMapping()
-    public List<UserResponse> getAllUsers() {
-        return getAllUsersUseCase.execute()
+    public ResponseEntity<List<UserResponse>> getAllUsers() {
+        List<UserResponse> users = getAllUsersUseCase.execute()
                 .stream()
                 .map(mapper::toResponse)
                 .toList();
+        return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 
     @GetMapping("{id}")
-    public UserResponse getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserResponse> getUserById(@PathVariable Long id) {
         User user = getUserByIdUseCase.execute(id);
-        return mapper.toResponse(user);
+        return ResponseEntity.status(HttpStatus.OK).body(mapper.toResponse(user));
     }
 
     @PutMapping("{id}")
-    public UserResponse updateUser(@PathVariable Long id, @Valid @RequestBody UserRequest dto) {
+    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UserRequest dto) {
         User updatedUser = updateUserUseCase.execute(id, mapper.toDomain(dto));
-        return mapper.toResponse(updatedUser);
+        return ResponseEntity.status(HttpStatus.OK).body(mapper.toResponse(updatedUser));
     }
 
     @DeleteMapping("{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         deleteUserUseCase.execute(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

@@ -7,6 +7,8 @@ import com.EduWise.EduWise.infra.dtos.student_enrollment.EnrollmentResponse;
 import com.EduWise.EduWise.infra.mappers.student_enrollment.StudentEnrollmentRequestResponseMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,32 +26,35 @@ public class StudentEnrollmentController {
     private final DeleteStudentEnrollmentUseCase deleteStudentEnrollmentUseCase;
     
     @PostMapping()
-    public EnrollmentResponse createEnrollment(@Valid @RequestBody EnrollmentRequest request){
+    public ResponseEntity<EnrollmentResponse> createEnrollment(@Valid @RequestBody EnrollmentRequest request){
         StudentEnrollment savedEnrollment = createStudentEnrollmentUseCase.execute(mapper.toDomain(request));
-        return mapper.toResponse(savedEnrollment);
+        return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(savedEnrollment));
     }
 
     @GetMapping()
-    public List<EnrollmentResponse> getAllEnrollments(){
-        return getAllStudentEnrollmentsUseCase.execute()
+    public ResponseEntity<List<EnrollmentResponse>> getAllEnrollments(){
+        List<EnrollmentResponse> enrollments = getAllStudentEnrollmentsUseCase.execute()
                 .stream()
                 .map(mapper::toResponse)
                 .toList();
+        return ResponseEntity.status(HttpStatus.OK).body(enrollments);
     }
+
     @GetMapping("{id}")
-    public EnrollmentResponse getEnrollmentById(@PathVariable Long id) {
+    public ResponseEntity<EnrollmentResponse> getEnrollmentById(@PathVariable Long id) {
         StudentEnrollment enrollment = getStudentEnrollmentByIdUseCase.execute(id);
-        return mapper.toResponse(enrollment);
+        return ResponseEntity.status(HttpStatus.OK).body(mapper.toResponse(enrollment));
     }
 
     @PutMapping("{id}")
-    public EnrollmentResponse updateEnrollment(@PathVariable Long id, @Valid @RequestBody EnrollmentRequest request) {
+    public ResponseEntity<EnrollmentResponse> updateEnrollment(@PathVariable Long id, @Valid @RequestBody EnrollmentRequest request) {
         StudentEnrollment updatedEnrollment = updateStudentEnrollmentUseCase.execute(id, mapper.toDomain(request));
-        return mapper.toResponse(updatedEnrollment);
+        return ResponseEntity.status(HttpStatus.OK).body(mapper.toResponse(updatedEnrollment));
     }
 
     @DeleteMapping("{id}")
-    public void deleteEnrollment(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteEnrollment(@PathVariable Long id) {
         deleteStudentEnrollmentUseCase.execute(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
