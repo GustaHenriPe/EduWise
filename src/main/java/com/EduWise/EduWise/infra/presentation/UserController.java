@@ -26,8 +26,8 @@ public class UserController {
     private final DeleteUserUseCase deleteUserUseCase;
 
     @PostMapping()
-    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest dto) {
-        User savedUser = createUserUseCase.execute(mapper.toDomain(dto));
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody UserRequest userRequest) {
+        User savedUser = createUserUseCase.execute(mapper.toDomain(userRequest));
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(savedUser));
     }
 
@@ -47,8 +47,8 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UserRequest dto) {
-        User updatedUser = updateUserUseCase.execute(id, mapper.toDomain(dto));
+    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UserRequest userRequest) {
+        User updatedUser = updateUserUseCase.execute(id, mapper.toDomain(userRequest));
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toResponse(updatedUser));
     }
 
