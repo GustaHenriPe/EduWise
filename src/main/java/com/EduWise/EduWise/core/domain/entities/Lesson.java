@@ -14,4 +14,7 @@ public record Lesson(
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {
+    public Lesson(Long moduleId, String title, ContentType contentType, String videoUrl, String textContent) {
+        this(null, moduleId, title, contentType, videoUrl, textContent, null, null);
+    }
 }
