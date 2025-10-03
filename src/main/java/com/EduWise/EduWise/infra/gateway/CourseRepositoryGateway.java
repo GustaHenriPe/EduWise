@@ -8,7 +8,6 @@ import com.EduWise.EduWise.infra.persistence.entities.CourseCategoryEntity;
 import com.EduWise.EduWise.infra.persistence.entities.CourseEntity;
 import com.EduWise.EduWise.infra.persistence.entities.UserEntity;
 import com.EduWise.EduWise.infra.persistence.repositories.CourseRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -27,8 +26,10 @@ public class CourseRepositoryGateway implements CourseGateway {
     public Course createCourse(Course course) {
         Long teacherId = course.teacherId();
         UserEntity teacher = userGateway.verifyUserById(course.teacherId());
+
         CourseCategoryEntity category = categoryGateway.verifyExistingCourseCategory(course.categoryId());
         CourseEntity courseEntity = mapper.toEntity(course);
+
         courseEntity.setTeacher(teacher);
         courseEntity.setCategory(category);
         CourseEntity savedCourse = courseRepository.save(courseEntity);
