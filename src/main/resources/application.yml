@@ -14,3 +14,7 @@ spring:
     deserialization:
       fail-on-null-for-primitives: true
       fail-on-missing-creator-properties: true
+  flyway:
+    enable: true
+    locations: classpath:db/migrations
+    baseline-on-migrate: true
