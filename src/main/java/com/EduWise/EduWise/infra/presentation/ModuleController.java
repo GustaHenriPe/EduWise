@@ -4,6 +4,7 @@ import com.EduWise.EduWise.core.usecases.module.*;
 import com.EduWise.EduWise.infra.dtos.module.ModuleRequest;
 import com.EduWise.EduWise.infra.dtos.module.ModuleResponse;
 import com.EduWise.EduWise.infra.mappers.module.ModuleRequestResponseMapper;
+import com.EduWise.EduWise.infra.presentation.api.ModuleApi;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/modules/")
-public class ModuleController {
+public class ModuleController implements ModuleApi {
 
     private final CreateModuleUseCase createModuleUseCase;
     private final GetAllModulesUseCase getAllModulesUseCase;
@@ -24,6 +25,7 @@ public class ModuleController {
     private final DeleteModuleUseCase deleteModuleUseCase;
     private final ModuleRequestResponseMapper mapper;
 
+    @Override
     @PostMapping()
     public ResponseEntity<ModuleResponse> createModule(@Valid @RequestBody ModuleRequest request) {
         var module = mapper.toDomain(request);
@@ -31,6 +33,7 @@ public class ModuleController {
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(createdModule));
     }
 
+    @Override
     @GetMapping()
     public ResponseEntity<List<ModuleResponse>> getAllModules() {
         List<ModuleResponse> modules = getAllModulesUseCase.execute().stream()
@@ -39,17 +42,20 @@ public class ModuleController {
         return ResponseEntity.status(HttpStatus.OK).body(modules);
     }
 
+    @Override
     @GetMapping("{id}")
     public ResponseEntity<ModuleResponse> getModuleById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toResponse(getModuleByIdUseCase.execute(id)));
     }
 
+    @Override
     @PutMapping("{id}")
     public ResponseEntity<ModuleResponse> updateModule(@PathVariable Long id, @Valid @RequestBody ModuleRequest request) {
         var updatedModule = updateModuleUseCase.execute(id, mapper.toDomain(request));
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toResponse(updatedModule));
     }
 
+    @Override
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteModule(@PathVariable Long id) {
         deleteModuleUseCase.execute(id);

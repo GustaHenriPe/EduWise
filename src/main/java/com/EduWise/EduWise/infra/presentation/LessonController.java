@@ -5,6 +5,7 @@ import com.EduWise.EduWise.core.usecases.lesson.*;
 import com.EduWise.EduWise.infra.dtos.lesson.LessonRequest;
 import com.EduWise.EduWise.infra.dtos.lesson.LessonResponse;
 import com.EduWise.EduWise.infra.mappers.lesson.LessonRequestResponseMapper;
+import com.EduWise.EduWise.infra.presentation.api.LessonApi;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/lessons/")
-public class LessonController {
+public class LessonController implements LessonApi {
 
     private final CreateLessonUseCase createLessonUseCase;
     private final GetAllLessonsUseCase getAllLessonsUseCase;
@@ -25,12 +26,14 @@ public class LessonController {
     private final DeleteLessonUseCase deleteLessonUseCase;
     private final LessonRequestResponseMapper mapper;
 
+    @Override
     @PostMapping()
     public ResponseEntity<LessonResponse> createLesson(@Valid @RequestBody LessonRequest lessonRequest) {
         Lesson savedLesson = createLessonUseCase.execute(mapper.toDomain(lessonRequest));
         return ResponseEntity.status(HttpStatus.CREATED).body(mapper.toResponse(savedLesson));
     }
 
+    @Override
     @GetMapping()
     public ResponseEntity<List<LessonResponse>> getAllLessons() {
         List<LessonResponse> lessons = getAllLessonsUseCase.execute()
@@ -40,18 +43,21 @@ public class LessonController {
         return ResponseEntity.ok(lessons);
     }
 
+    @Override
     @GetMapping("{id}")
     public ResponseEntity<Lesson> getLessonById(@PathVariable Long id) {
         Lesson lesson = getLessonByIdUseCase.execute(id);
         return ResponseEntity.ok(lesson);
     }
 
+    @Override
     @PutMapping("{id}")
     public ResponseEntity<LessonResponse> updateLesson(@PathVariable Long id, @Valid @RequestBody LessonRequest lessonRequest) {
         Lesson updatedLesson = updateLessonUseCase.execute(id, mapper.toDomain(lessonRequest));
         return ResponseEntity.ok(mapper.toResponse(updatedLesson));
     }
 
+    @Override
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteLesson(@PathVariable Long id) {
         deleteLessonUseCase.execute(id);
