@@ -1,10 +1,13 @@
 package com.EduWise.EduWise.infra.dtos.user;
 
 import com.EduWise.EduWise.core.enums.Roles;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Builder;
 
+
+@Schema(description = "Request body for creating or updating a user.")
 @Builder
 public record UserRequest(
         @NotNull(message = "Name cannot be null")
