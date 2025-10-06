@@ -62,6 +62,7 @@ O projeto segue os princípios da **Clean Architecture** com as seguintes camada
 - **Spring Boot 3.5.5** - Framework principal
 - **Spring Data JPA** - Persistência de dados
 - **Spring Web** - APIs REST
+- **Springdoc OpenAPI** - Geração automática de documentação OpenAPI
 - **Microsoft SQL Server** - Banco de dados
 - **Lombok** - Redução de boilerplate
 - **Bean Validation** - Validações
