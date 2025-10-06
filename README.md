@@ -4,6 +4,7 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![Maven](https://img.shields.io/badge/Maven-3.8+-blue.svg)](https://maven.apache.org/)
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-2019+-red.svg)](https://www.microsoft.com/sql-server)
+[![OpenAPI/Swagger](https://img.shields.io/badge/OpenAPI-3.0-blue.svg)](https://swagger.io/specification/)
 
 > **Uma API REST robusta para plataforma de cursos online, construída com Spring Boot e arquitetura limpa.**
 
@@ -19,6 +20,7 @@ EduWise é uma API completa para gerenciamento de cursos online que oferece func
 - [Configuração](#-configuração)
 - [Uso](#-uso)
 - [API Endpoints](#-api-endpoints)
+- [Documentação Swagger](#-documentação-swagger)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
 - [Validações](#-validações)
 - [Tratamento de Erros](#-tratamento-de-erros)
@@ -167,6 +169,18 @@ curl -X POST http://localhost:8080/courses/ \
 - `POST /student-enrollments/` - Criar inscrição
 - `PUT /student-enrollments/{id}` - Atualizar inscrição
 - `DELETE /student-enrollments/{id}` - Cancelar inscrição
+
+## 📖 Documentação Swagger
+
+A documentação interativa da API é gerada automaticamente com o Springdoc OpenAPI e Swagger UI.
+
+- **Swagger UI:**
+  - Acesse: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+  - Explore e teste todos os endpoints diretamente pelo navegador.
+- **OpenAPI JSON:**
+  - [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+A documentação inclui exemplos de requisição/resposta, descrições dos campos, códigos de status e detalhes de erros.
 
 ## 📁 Estrutura do Projeto
 
