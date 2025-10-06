@@ -49,7 +49,6 @@ O projeto segue os princípios da **Clean Architecture** com as seguintes camada
 └── infra/
     ├── beans/          # Configurações Spring
     ├── dtos/           # Objetos de transferência
-    ├── exceptions/     # Tratamento de exceções
     ├── gateway/        # Implementações dos gateways
     ├── mappers/        # Conversores DTO ↔ Domain
     ├── persistence/    # Repositórios JPA
@@ -202,7 +201,6 @@ src/main/java/com/EduWise/EduWise/
 └── infra/
     ├── beans/                     # Configurações Spring
     ├── dtos/                      # Request/Response DTOs
-    ├── exceptions/                # Handler global de exceções
     ├── gateway/                   # Implementações JPA
     ├── mappers/                   # Conversores de dados
     ├── persistence/               # Repositórios JPA
@@ -298,7 +296,7 @@ Este projeto foi desenvolvido com foco em boas práticas de engenharia de softwa
 
 **Seu Nome**
 - GitHub: [@GustaHenriPe](https://github.com/GustaHenriPe)
-- LinkedIn: [Gustavo Henrique](www.linkedin.com/in/gustavo-henriquep)
+- LinkedIn: [Gustavo Henrique](https://www.linkedin.com/in/gustavo-henriquep)
 - Email: guhhpj@gmail.com
 
 
